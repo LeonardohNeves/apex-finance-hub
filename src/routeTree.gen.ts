@@ -9,8 +9,62 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RiscoRouteImport } from './routes/risco'
+import { Route as RendaPassivaRouteImport } from './routes/renda-passiva'
+import { Route as RelatoriosRouteImport } from './routes/relatorios'
+import { Route as PlanejamentoRouteImport } from './routes/planejamento'
+import { Route as MetasRouteImport } from './routes/metas'
+import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
+import { Route as CarteiraRouteImport } from './routes/carteira'
+import { Route as AportesRouteImport } from './routes/aportes'
+import { Route as AgendaRouteImport } from './routes/agenda'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RiscoRoute = RiscoRouteImport.update({
+  id: '/risco',
+  path: '/risco',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RendaPassivaRoute = RendaPassivaRouteImport.update({
+  id: '/renda-passiva',
+  path: '/renda-passiva',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosRoute = RelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanejamentoRoute = PlanejamentoRouteImport.update({
+  id: '/planejamento',
+  path: '/planejamento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetasRoute = MetasRouteImport.update({
+  id: '/metas',
+  path: '/metas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarteiraRoute = CarteiraRouteImport.update({
+  id: '/carteira',
+  path: '/carteira',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AportesRoute = AportesRouteImport.update({
+  id: '/aportes',
+  path: '/aportes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgendaRoute = AgendaRouteImport.update({
+  id: '/agenda',
+  path: '/agenda',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +73,158 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
+  '/aportes': typeof AportesRoute
+  '/carteira': typeof CarteiraRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/metas': typeof MetasRoute
+  '/planejamento': typeof PlanejamentoRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/renda-passiva': typeof RendaPassivaRoute
+  '/risco': typeof RiscoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
+  '/aportes': typeof AportesRoute
+  '/carteira': typeof CarteiraRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/metas': typeof MetasRoute
+  '/planejamento': typeof PlanejamentoRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/renda-passiva': typeof RendaPassivaRoute
+  '/risco': typeof RiscoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
+  '/aportes': typeof AportesRoute
+  '/carteira': typeof CarteiraRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/metas': typeof MetasRoute
+  '/planejamento': typeof PlanejamentoRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/renda-passiva': typeof RendaPassivaRoute
+  '/risco': typeof RiscoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/agenda'
+    | '/aportes'
+    | '/carteira'
+    | '/configuracoes'
+    | '/metas'
+    | '/planejamento'
+    | '/relatorios'
+    | '/renda-passiva'
+    | '/risco'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/agenda'
+    | '/aportes'
+    | '/carteira'
+    | '/configuracoes'
+    | '/metas'
+    | '/planejamento'
+    | '/relatorios'
+    | '/renda-passiva'
+    | '/risco'
+  id:
+    | '__root__'
+    | '/'
+    | '/agenda'
+    | '/aportes'
+    | '/carteira'
+    | '/configuracoes'
+    | '/metas'
+    | '/planejamento'
+    | '/relatorios'
+    | '/renda-passiva'
+    | '/risco'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgendaRoute: typeof AgendaRoute
+  AportesRoute: typeof AportesRoute
+  CarteiraRoute: typeof CarteiraRoute
+  ConfiguracoesRoute: typeof ConfiguracoesRoute
+  MetasRoute: typeof MetasRoute
+  PlanejamentoRoute: typeof PlanejamentoRoute
+  RelatoriosRoute: typeof RelatoriosRoute
+  RendaPassivaRoute: typeof RendaPassivaRoute
+  RiscoRoute: typeof RiscoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/risco': {
+      id: '/risco'
+      path: '/risco'
+      fullPath: '/risco'
+      preLoaderRoute: typeof RiscoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/renda-passiva': {
+      id: '/renda-passiva'
+      path: '/renda-passiva'
+      fullPath: '/renda-passiva'
+      preLoaderRoute: typeof RendaPassivaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios': {
+      id: '/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof RelatoriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planejamento': {
+      id: '/planejamento'
+      path: '/planejamento'
+      fullPath: '/planejamento'
+      preLoaderRoute: typeof PlanejamentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metas': {
+      id: '/metas'
+      path: '/metas'
+      fullPath: '/metas'
+      preLoaderRoute: typeof MetasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracoes': {
+      id: '/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof ConfiguracoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carteira': {
+      id: '/carteira'
+      path: '/carteira'
+      fullPath: '/carteira'
+      preLoaderRoute: typeof CarteiraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aportes': {
+      id: '/aportes'
+      path: '/aportes'
+      fullPath: '/aportes'
+      preLoaderRoute: typeof AportesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agenda': {
+      id: '/agenda'
+      path: '/agenda'
+      fullPath: '/agenda'
+      preLoaderRoute: typeof AgendaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +237,26 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgendaRoute: AgendaRoute,
+  AportesRoute: AportesRoute,
+  CarteiraRoute: CarteiraRoute,
+  ConfiguracoesRoute: ConfiguracoesRoute,
+  MetasRoute: MetasRoute,
+  PlanejamentoRoute: PlanejamentoRoute,
+  RelatoriosRoute: RelatoriosRoute,
+  RendaPassivaRoute: RendaPassivaRoute,
+  RiscoRoute: RiscoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
