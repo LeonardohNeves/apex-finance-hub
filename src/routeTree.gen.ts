@@ -9,20 +9,35 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as RiscoRouteImport } from './routes/risco'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RendaPassivaRouteImport } from './routes/renda-passiva'
 import { Route as RelatoriosRouteImport } from './routes/relatorios'
 import { Route as PlanejamentoRouteImport } from './routes/planejamento'
+import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as MetasRouteImport } from './routes/metas'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
 import { Route as CarteiraRouteImport } from './routes/carteira'
 import { Route as AportesRouteImport } from './routes/aportes'
 import { Route as AgendaRouteImport } from './routes/agenda'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RiscoRoute = RiscoRouteImport.update({
   id: '/risco',
   path: '/risco',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RendaPassivaRoute = RendaPassivaRouteImport.update({
@@ -40,9 +55,24 @@ const PlanejamentoRoute = PlanejamentoRouteImport.update({
   path: '/planejamento',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MetasRoute = MetasRouteImport.update({
   id: '/metas',
   path: '/metas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
@@ -77,11 +107,16 @@ export interface FileRoutesByFullPath {
   '/aportes': typeof AportesRoute
   '/carteira': typeof CarteiraRoute
   '/configuracoes': typeof ConfiguracoesRoute
+  '/login': typeof LoginRoute
   '/metas': typeof MetasRoute
+  '/onboarding': typeof OnboardingRoute
+  '/perfil': typeof PerfilRoute
   '/planejamento': typeof PlanejamentoRoute
   '/relatorios': typeof RelatoriosRoute
   '/renda-passiva': typeof RendaPassivaRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/risco': typeof RiscoRoute
+  '/signup': typeof SignupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -89,11 +124,16 @@ export interface FileRoutesByTo {
   '/aportes': typeof AportesRoute
   '/carteira': typeof CarteiraRoute
   '/configuracoes': typeof ConfiguracoesRoute
+  '/login': typeof LoginRoute
   '/metas': typeof MetasRoute
+  '/onboarding': typeof OnboardingRoute
+  '/perfil': typeof PerfilRoute
   '/planejamento': typeof PlanejamentoRoute
   '/relatorios': typeof RelatoriosRoute
   '/renda-passiva': typeof RendaPassivaRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/risco': typeof RiscoRoute
+  '/signup': typeof SignupRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -102,11 +142,16 @@ export interface FileRoutesById {
   '/aportes': typeof AportesRoute
   '/carteira': typeof CarteiraRoute
   '/configuracoes': typeof ConfiguracoesRoute
+  '/login': typeof LoginRoute
   '/metas': typeof MetasRoute
+  '/onboarding': typeof OnboardingRoute
+  '/perfil': typeof PerfilRoute
   '/planejamento': typeof PlanejamentoRoute
   '/relatorios': typeof RelatoriosRoute
   '/renda-passiva': typeof RendaPassivaRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/risco': typeof RiscoRoute
+  '/signup': typeof SignupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -116,11 +161,16 @@ export interface FileRouteTypes {
     | '/aportes'
     | '/carteira'
     | '/configuracoes'
+    | '/login'
     | '/metas'
+    | '/onboarding'
+    | '/perfil'
     | '/planejamento'
     | '/relatorios'
     | '/renda-passiva'
+    | '/reset-password'
     | '/risco'
+    | '/signup'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -128,11 +178,16 @@ export interface FileRouteTypes {
     | '/aportes'
     | '/carteira'
     | '/configuracoes'
+    | '/login'
     | '/metas'
+    | '/onboarding'
+    | '/perfil'
     | '/planejamento'
     | '/relatorios'
     | '/renda-passiva'
+    | '/reset-password'
     | '/risco'
+    | '/signup'
   id:
     | '__root__'
     | '/'
@@ -140,11 +195,16 @@ export interface FileRouteTypes {
     | '/aportes'
     | '/carteira'
     | '/configuracoes'
+    | '/login'
     | '/metas'
+    | '/onboarding'
+    | '/perfil'
     | '/planejamento'
     | '/relatorios'
     | '/renda-passiva'
+    | '/reset-password'
     | '/risco'
+    | '/signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -153,20 +213,39 @@ export interface RootRouteChildren {
   AportesRoute: typeof AportesRoute
   CarteiraRoute: typeof CarteiraRoute
   ConfiguracoesRoute: typeof ConfiguracoesRoute
+  LoginRoute: typeof LoginRoute
   MetasRoute: typeof MetasRoute
+  OnboardingRoute: typeof OnboardingRoute
+  PerfilRoute: typeof PerfilRoute
   PlanejamentoRoute: typeof PlanejamentoRoute
   RelatoriosRoute: typeof RelatoriosRoute
   RendaPassivaRoute: typeof RendaPassivaRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   RiscoRoute: typeof RiscoRoute
+  SignupRoute: typeof SignupRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/risco': {
       id: '/risco'
       path: '/risco'
       fullPath: '/risco'
       preLoaderRoute: typeof RiscoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/renda-passiva': {
@@ -190,11 +269,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlanejamentoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/metas': {
       id: '/metas'
       path: '/metas'
       fullPath: '/metas'
       preLoaderRoute: typeof MetasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/configuracoes': {
@@ -241,11 +341,16 @@ const rootRouteChildren: RootRouteChildren = {
   AportesRoute: AportesRoute,
   CarteiraRoute: CarteiraRoute,
   ConfiguracoesRoute: ConfiguracoesRoute,
+  LoginRoute: LoginRoute,
   MetasRoute: MetasRoute,
+  OnboardingRoute: OnboardingRoute,
+  PerfilRoute: PerfilRoute,
   PlanejamentoRoute: PlanejamentoRoute,
   RelatoriosRoute: RelatoriosRoute,
   RendaPassivaRoute: RendaPassivaRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   RiscoRoute: RiscoRoute,
+  SignupRoute: SignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
