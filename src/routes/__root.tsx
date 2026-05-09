@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Sidebar } from "@/components/layout/Sidebar";
 
 function NotFoundComponent() {
   return (
@@ -72,11 +73,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "VaultPro — Dashboard de Investimentos" },
+      { name: "description", content: "Plataforma premium para planejamento financeiro, controle de carteira e estratégia de investimentos." },
+      { name: "author", content: "VaultPro" },
+      { property: "og:title", content: "VaultPro — Dashboard de Investimentos" },
+      { property: "og:description", content: "Plataforma premium para planejamento financeiro e controle estratégico de investimentos." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -96,9 +97,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" className="dark">
       <head>
         <HeadContent />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+        />
       </head>
       <body>
         {children}
@@ -113,7 +120,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="min-h-screen">
+        <Sidebar />
+        <main className="pl-[92px] md:pl-[100px] pr-3 md:pr-6 py-6">
+          <Outlet />
+        </main>
+      </div>
     </QueryClientProvider>
   );
 }
