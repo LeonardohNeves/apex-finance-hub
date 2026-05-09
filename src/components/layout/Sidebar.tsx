@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard,
   Wallet,
-  PieChart,
   Target,
   ArrowDownToLine,
   Coins,
@@ -14,8 +13,11 @@ import {
   Settings,
   Plus,
   Sparkles,
+  UserCircle2,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/lib/auth-context";
 
 const items = [
   { to: "/", label: "Dashboard Geral", icon: LayoutDashboard },
@@ -27,12 +29,15 @@ const items = [
   { to: "/risco", label: "Análise de Risco", icon: ShieldAlert },
   { to: "/relatorios", label: "Relatórios", icon: FileText },
   { to: "/agenda", label: "Agenda", icon: CalendarDays },
+  { to: "/perfil", label: "Perfil do Investidor", icon: UserCircle2 },
   { to: "/configuracoes", label: "Configurações", icon: Settings },
 ] as const;
 
 export function Sidebar() {
   const [expanded, setExpanded] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { profile, user, signOut } = useAuth();
+  const initials = (profile?.full_name || user?.email || "U").slice(0, 1).toUpperCase();
 
   return (
     <motion.aside
@@ -115,8 +120,8 @@ export function Sidebar() {
         })}
       </nav>
 
-      {/* Create new area */}
-      <div className="p-2 border-t border-border/60">
+      {/* Create new + user */}
+      <div className="p-2 border-t border-border/60 space-y-1">
         <button
           className={cn(
             "group w-full flex items-center gap-3 rounded-xl px-3 h-11 transition-all",
@@ -140,6 +145,37 @@ export function Sidebar() {
             )}
           </AnimatePresence>
         </button>
+
+        <div className="flex items-center gap-3 rounded-xl px-2 h-12">
+          <div className="size-8 shrink-0 rounded-full gradient-primary grid place-items-center text-primary-foreground font-semibold text-sm shadow-glow">
+            {initials}
+          </div>
+          <AnimatePresence>
+            {expanded && (
+              <motion.div
+                initial={{ opacity: 0, x: -6 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -6 }}
+                transition={{ duration: 0.15 }}
+                className="flex-1 min-w-0"
+              >
+                <p className="text-xs font-medium truncate">{profile?.full_name || user?.email}</p>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground truncate">
+                  {profile?.investor_profile ?? "Sem perfil"}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          {expanded && (
+            <button
+              onClick={() => signOut()}
+              className="size-8 shrink-0 rounded-lg grid place-items-center text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all"
+              title="Sair"
+            >
+              <LogOut className="size-4" />
+            </button>
+          )}
+        </div>
       </div>
     </motion.aside>
   );
