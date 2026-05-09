@@ -36,6 +36,8 @@ const items = [
 export function Sidebar() {
   const [expanded, setExpanded] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { profile, user, signOut } = useAuth();
+  const initials = (profile?.full_name || user?.email || "U").slice(0, 1).toUpperCase();
 
   return (
     <motion.aside
