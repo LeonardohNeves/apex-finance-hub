@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard,
   Wallet,
-  PieChart,
   Target,
   ArrowDownToLine,
   Coins,
@@ -14,8 +13,11 @@ import {
   Settings,
   Plus,
   Sparkles,
+  UserCircle2,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/lib/auth-context";
 
 const items = [
   { to: "/", label: "Dashboard Geral", icon: LayoutDashboard },
@@ -27,6 +29,7 @@ const items = [
   { to: "/risco", label: "Análise de Risco", icon: ShieldAlert },
   { to: "/relatorios", label: "Relatórios", icon: FileText },
   { to: "/agenda", label: "Agenda", icon: CalendarDays },
+  { to: "/perfil", label: "Perfil do Investidor", icon: UserCircle2 },
   { to: "/configuracoes", label: "Configurações", icon: Settings },
 ] as const;
 
